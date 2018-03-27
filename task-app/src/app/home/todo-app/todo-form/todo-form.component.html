@@ -1,0 +1,11 @@
+<form #todoForm="ngForm" (ngSubmit)="todoForm.valid && addTodo(todoForm)" autocomplete="off">
+  <div class="form-group" [ngClass]="{ 'has-error': task.touched && task.invalid }">
+    <label for="task" class="control-label">Add Task</label>
+    <input type="text" id="task" class="form-control" name="task" [(ngModel)]="model.task" #task="ngModel" required>
+    <span *ngIf="task.touched && task.invalid" class="help-block">Task can't be blank.</span>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary">Add</button>
+  </div>
+</form>

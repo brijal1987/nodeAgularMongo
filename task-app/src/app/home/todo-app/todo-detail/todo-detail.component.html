@@ -1,0 +1,29 @@
+<div *ngIf="task; else loading" class="well">
+  <p>
+      <strong>Task ID</strong>
+      <span>{{task._id}}</span>
+  </p>
+
+  <p>
+      <strong>Task</strong>
+      <span>{{task.title}}</span>
+  </p>
+  
+  <p>
+    <strong>Status</strong>
+    <span [ngClass]="{ 'completed': task.completed, 'pending': !task.completed }">
+        {{task.completed ? 'Completed' : 'Pending'}}
+    </span>
+  </p>
+
+  <p>
+    <strong>Created/Modified Date</strong>
+    <span>{{task.date}}</span>
+  </p>
+</div>
+
+<ng-template #loading>
+    <div class="well">
+        Loading...
+      </div>
+</ng-template>

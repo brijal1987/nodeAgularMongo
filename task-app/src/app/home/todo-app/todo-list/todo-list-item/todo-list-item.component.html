@@ -1,0 +1,26 @@
+  <span [appComplete]="task.completed">
+    {{task.title | myUppercase}} - 
+    {{task.date | date | myUppercase}}
+  </span>
+
+  <button class="btn btn-danger pull-right" (click)="remove(task._id)">
+    <span class="glyphicon glyphicon-remove"></span>
+  </button>
+
+  <button class="btn btn-info pull-right" routerLink="/detail/{{task._id}}">
+    <span class="glyphicon glyphicon-option-horizontal"></span>
+  </button>
+
+  <button *ngIf="task.completed; else completeTaskTemplate" class="btn btn-success pull-right" (click)="resetTask(task._id)">
+    <span class="glyphicon glyphicon-refresh"></span>
+  </button>
+
+  <ng-template #completeTaskTemplate>
+      <button class="btn btn-success pull-right" (click)="complete(task._id)">
+          <span class="glyphicon glyphicon-ok"></span>
+        </button>
+  </ng-template>
+  
+
+  <div class="clearfix"></div>
+  
